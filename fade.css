@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0;}
+ul{list-style: none;}
+
+h1{
+    text-align: center;
+    padding: 50px 0px;
+}
+.carousel{
+    height: 850px;
+    position: relative;
+}
+.carousel .list>li{
+    width: 100%; height: 850px;
+    background-color: lightyellow;
+    position: absolute;
+    left: 0; top:0;
+    font-size: 15em; color: white;
+    text-align: center; line-height: 500px;
+    display: none;
+}
+.carousel .list>li>img{
+    object-fit: contain;
+    width: 100%; height: 100%;
+}
+/* .carousel .list>li.bg1{
+    background-color:pink;
+    display: block;
+}
+.carousel .list>li.bg2{
+    background-color: yellow;
+}
+.carousel .list>li.bg3{
+    background-color: yellowgreen;
+}
+.carousel .list>li.bg4{
+    background-color:skyblue;
+} */
+.carousel>p{
+    position: absolute;
+    top:300px; color: white;
+    font-size: 10em;
+    cursor: pointer;
+}
+.carousel .indicator{
+    width: 100px;
+    display: flex;
+    position: absolute;
+    bottom: 10%; left: 50%;
+    transform: translateX(-50%);
+    justify-content: space-between;
+}
+.carousel .indicator>li{
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    cursor: pointer;
+}
+.carousel .indicator>li.on{
+    background-color: palegreen;
+}
+.carousel .prev{left: 80px;}
+.carousel .next{right: 80px;}

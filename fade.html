@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이드인아웃</title>
+    <link rel="stylesheet" href="fade.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let i = 0;
+            let count = $(".list>li").length;
+
+            $(".next").click(function(){
+                if(i == count-1){
+                    i = 0;
+                }else{
+                    i++;
+                }
+                show();
+            });
+
+            $(".prev").click(function(){
+                if(i == 0){
+                    i = count-1;
+                }else{
+                    i--;
+                }
+                show();
+            });
+
+            $(".indicator>li").click(function(){
+                i = $(this).index();
+                show();
+            });
+
+            let autoSlide = setInterval(function(){
+                if(i == count-1){
+                    i = 0;
+                }else{
+                    i++;
+                }
+                show();
+            }, 10);
+
+            $(".carousel").mouseenter(function(){
+                clearInterval(autoSlide);
+            });
+            $(".carousel").mouseleave(function(){
+                autoSlide = setInterval(function(){
+                    if(i == count-1){
+                        i = 0;
+                    }else{
+                        i++;
+                    }
+                    show();
+                }, 10);
+            });
+
+            function show(){
+                $(".indicator>li").removeClass("on");
+                $(".indicator>li").eq(i).addClass("on");
+                $(".list>li").stop().fadeOut();
+                $(".list>li").eq(i).stop().fadeIn();
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <div class="carousel">
+        <ul class="list">
+            <li class="bg1">001</li>
+            <li class="bg2">002</li>
+            <li class="bg3">003</li>
+            <li class="bg4">004</li>
+        </ul>
+        <ul class="indicator">
+            <li class="on"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p class="prev">&lt;</p>
+        <p class="next">&gt;</p>
+    </div>
+</body>
+</html>
